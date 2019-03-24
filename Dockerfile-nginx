@@ -1,0 +1,7 @@
+FROM nginx
+
+#Copy your static content
+COPY . /usr/share/nginx/html
+
+#no entrypoint or command is required
+#defaults to PORT 80

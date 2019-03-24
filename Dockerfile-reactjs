@@ -1,0 +1,20 @@
+FROM node:alpine as builder
+
+# Create a working directory
+WORKDIR /usr/app
+
+COPY ./package* ./
+
+# Install dependencies 
+RUN npm install
+
+
+COPY ./ ./
+
+#This command will generate build folder
+RUN npm run build
+
+#deploy your static content on nginx
+FROM nginx:latest
+
+COPY --from=builder /app/build /usr/share/nginx/html

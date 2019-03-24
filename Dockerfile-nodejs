@@ -1,0 +1,20 @@
+FROM node:alpine
+
+#SET PORT (optional)
+ENV PORT 8080
+
+# Create app directory
+WORKDIR /app
+
+
+COPY package*.json ./
+
+#Install App dependencies
+RUN npm install
+
+COPY . .
+
+EXPOSE $PORT
+
+#In case, no start script is defined run ["node","index.js"]
+CMD [ "npm", "start" ]

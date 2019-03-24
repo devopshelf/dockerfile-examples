@@ -1,0 +1,12 @@
+FROM java:latest
+
+# Creating a working directory 
+WORKDIR /var/www/java  
+
+COPY . /var/www/java 
+
+# Compile your Java file
+RUN javac Hello.java
+
+CMD ["java", "Hello"]  
+
